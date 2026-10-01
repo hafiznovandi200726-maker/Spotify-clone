@@ -77,3 +77,37 @@ body {
   border-radius: 4px;
   flex-shrink: 0;
 }
+.teks { min-width: 0; }
+.judul {
+  font-weight: bold;
+  margin: 0 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.artis {
+  color: var(--abu);
+  font-size: 12px;
+  margin: 0;
+}
+
+.pemutar { min-width: 0; }
+.pemutar audio {
+  display: none;
+  width: 100%;
+}
+
+/* daftar lagu di kanan */
+.daftar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.daftar label {
+  color: var(--abu);
+  border: 1px solid var(--garis);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+}
+.daftar label:hover { color: var(--putih); border-color: var(--abu); }
