@@ -39,3 +39,41 @@ body {
   justify-content: center;
   padding: 24px 16px;
 }
+
+.sampul {
+  display: none;
+  width: min(70vw, 50vh, 380px);
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  font-size: 96px;
+  font-weight: bold;
+  color: var(--putih);
+}
+.sampul-1 { background: linear-gradient(135deg, #1e3cd6, #0a1450); }
+.sampul-2 { background: linear-gradient(135deg, #1aa88a, #0b3d36); }
+.sampul-3 { background: linear-gradient(135deg, #d9682a, #5a2208); }
+
+/* ===== bar bawah ===== */
+.bar {
+  border-top: 1px solid var(--garis);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1.6fr 1fr;
+  align-items: center;
+  gap: 16px 32px;
+}
+
+.info {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.mini {
+  width: 52px;
+  height: 52px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
