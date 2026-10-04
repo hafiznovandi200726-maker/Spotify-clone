@@ -42,7 +42,6 @@ body {
   flex-direction: column;
 }
 
-/* ===== panggung ===== */
 .layar {
   flex: 1;
   position: relative;
@@ -78,7 +77,6 @@ body {
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.55), 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
-/* ===== bar bawah: kiri info lagu | tengah pemutar | kanan volume dan pilih lagu ===== */
 .bar {
   background: var(--hitam);
   padding: 16px;
@@ -115,7 +113,6 @@ body {
   text-overflow: ellipsis;
 }
 
-/* ===== pemutar (tengah) ===== */
 .pemutar {
   min-width: 0;
   display: flex;
@@ -132,8 +129,6 @@ body {
   gap: 16px;
 }
 
-
-/* tombol ikon */
 .ib {
   position: relative;
   width: 32px;
@@ -167,7 +162,6 @@ body {
   stroke-linejoin: round;
 }
 
-/* acak dan ulangi saat aktif: putih dengan titik di bawah */
 .ib[aria-pressed="true"] { color: var(--putih); }
 .ib[aria-pressed="true"]::after {
   content: '';
@@ -203,7 +197,6 @@ body {
 .pemutar[data-main="ya"] .ikon-play { display: none; }
 .pemutar[data-main="ya"] .ikon-jeda { display: block; }
 
-/* lingkaran berputar saat lagu sedang dimuat */
 .putar-muat {
   display: none;
   width: 18px;
@@ -217,7 +210,6 @@ body {
 .pemutar.muat .putar-muat { display: block; }
 @keyframes putar { to { transform: rotate(360deg); } }
 
-/* waktu dan progress bar */
 .waktu {
   width: 100%;
   max-width: 620px;
@@ -241,7 +233,6 @@ body {
 }
 .pesan:empty { display: none; }
 
-/* ===== slider (progress dan volume) ===== */
 .geser {
   --p: 0%;
   --isi: #b3b3b3;
