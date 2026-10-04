@@ -96,3 +96,69 @@
       });
     }
   }
+
+ function pindah(nomor, langsungPutar) {
+    nomor = (nomor + jumlah) % jumlah;
+    audios.forEach(function (a, k) {
+      a.pause();
+      if (k !== nomor) a.currentTime = 0;
+    });
+    radios[nomor].checked = true;
+    terakhir = nomor;
+    audios[nomor].preload = 'metadata';
+    pesan('');
+    pemutar.classList.remove('muat');
+    tampilWaktu();
+    tampilPlay();
+    if (langsungPutar) putar();
+  }
+
+  function berikutnya() {
+    var sekarang = nomorAktif();
+    if (jumlah < 2) {
+      audios[0].currentTime = 0;
+      putar();
+      return;
+    }
+    var tujuan;
+    if (acak) {
+      do { tujuan = Math.floor(Math.random() * jumlah); } while (tujuan === sekarang);
+    } else {
+      tujuan = (sekarang + 1) % jumlah;
+    }
+    pindah(tujuan, true);
+  }
+
+  function sebelumnya() {
+    var a = audioAktif();
+    // lebih dari 3 detik: ulang dari awal. Kurang dari itu: lagu sebelumnya.
+    if (a.currentTime > 3 || jumlah < 2) {
+      a.currentTime = 0;
+      tampilWaktu();
+      return;
+    }
+    pindah(nomorAktif() - 1, true);
+  }
+
+  /* ---------- tombol ---------- */
+
+  btnPlay.addEventListener('click', function () {
+    var a = audioAktif();
+    if (a.paused) putar(); else a.pause();
+  });
+  btnNext.addEventListener('click', berikutnya);
+  btnPrev.addEventListener('click', sebelumnya);
+
+  btnShuffle.addEventListener('click', function () {
+    acak = !acak;
+    btnShuffle.setAttribute('aria-pressed', String(acak));
+    btnShuffle.setAttribute('aria-label', acak ? 'Acak: hidup' : 'Acak');
+  });
+
+  btnRepeat.addEventListener('click', function () {
+    ulangi = ulangi === 'off' ? 'all' : ulangi === 'all' ? 'one' : 'off';
+    btnRepeat.setAttribute('data-mode', ulangi);
+    btnRepeat.setAttribute('aria-pressed', String(ulangi !== 'off'));
+    btnRepeat.setAttribute('aria-label',
+      'Ulangi: ' + (ulangi === 'off' ? 'mati' : ulangi === 'all' ? 'semua lagu' : 'satu lagu'));
+  });
