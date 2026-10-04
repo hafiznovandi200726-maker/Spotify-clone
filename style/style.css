@@ -131,3 +131,62 @@ body {
   align-items: center;
   gap: 16px;
 }
+
+
+/* tombol ikon */
+.ib {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--abu);
+  cursor: pointer;
+  transition: color 0.15s, transform 0.1s;
+}
+.ib:hover { color: var(--putih); }
+.ib:active { transform: scale(0.92); }
+.ib:focus-visible {
+  outline: 2px solid var(--putih);
+  outline-offset: 2px;
+}
+.ib svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+.ib svg.garis {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* acak dan ulangi saat aktif: putih dengan titik di bawah */
+.ib[aria-pressed="true"] { color: var(--putih); }
+.ib[aria-pressed="true"]::after {
+  content: '';
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  margin-left: -2px;
+  border-radius: 50%;
+  background: var(--putih);
+}
+.angka-satu { display: none; }
+#btn-repeat[data-mode="one"] .angka-satu { display: inline; }
+
+/* tombol play: lingkaran putih */
+.tombol-play {
+  width: 40px;
+  height: 40px;
+  background: var(--putih);
+  color: var(--hitam);
+}
