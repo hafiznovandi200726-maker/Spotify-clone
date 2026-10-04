@@ -183,10 +183,86 @@ body {
 .angka-satu { display: none; }
 #btn-repeat[data-mode="one"] .angka-satu { display: inline; }
 
-/* tombol play: lingkaran putih */
 .tombol-play {
   width: 40px;
   height: 40px;
   background: var(--putih);
   color: var(--hitam);
 }
+
+.tombol-play:hover {
+  color: var(--hitam);
+  transform: scale(1.06);
+}
+.tombol-play:active { transform: scale(0.96); }
+.tombol-play svg {
+  width: 20px;
+  height: 20px;
+}
+.ikon-jeda { display: none; }
+.pemutar[data-main="ya"] .ikon-play { display: none; }
+.pemutar[data-main="ya"] .ikon-jeda { display: block; }
+
+/* lingkaran berputar saat lagu sedang dimuat */
+.putar-muat {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(0, 0, 0, 0.25);
+  border-top-color: var(--hitam);
+  border-radius: 50%;
+  animation: putar 0.8s linear infinite;
+}
+.pemutar.muat .tombol-play svg { display: none; }
+.pemutar.muat .putar-muat { display: block; }
+@keyframes putar { to { transform: rotate(360deg); } }
+
+/* waktu dan progress bar */
+.waktu {
+  width: 100%;
+  max-width: 620px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.jam {
+  min-width: 34px;
+  font-size: 12px;
+  color: var(--abu);
+  font-variant-numeric: tabular-nums;
+}
+#waktu-now { text-align: right; }
+
+.pesan {
+  margin: 0;
+  font-size: 12px;
+  color: #ff8a8a;
+  text-align: center;
+}
+.pesan:empty { display: none; }
+
+/* ===== slider (progress dan volume) ===== */
+.geser {
+  --p: 0%;
+  --isi: #b3b3b3;
+  flex: 1;
+  min-width: 0;
+  height: 16px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.geser:hover, .geser:focus-visible { --isi: var(--putih); }
+.geser:focus-visible {
+  outline: 2px solid var(--putih);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.geser::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, var(--isi) var(--p), rgba(255, 255, 255, 0.3) var(--p));
+} 
