@@ -28,8 +28,6 @@
   var volume = 0.7;
   var bisu = false;
 
-  /* ---------- fungsi bantu ---------- */
-
   function nomorAktif() {
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].checked) return i;
@@ -51,8 +49,6 @@
   }
 
   function pesan(teks) { pesanEl.textContent = teks; }
-
-  /* ---------- tampilan ---------- */
 
   function tampilWaktu() {
     var a = audioAktif();
@@ -83,9 +79,7 @@
       a.muted = bisu;
     });
   }
-
-  /* ---------- memutar ---------- */
-
+  
   function putar() {
     var janji = audioAktif().play();
     if (janji && janji.catch) {
@@ -131,7 +125,7 @@
 
   function sebelumnya() {
     var a = audioAktif();
-    // lebih dari 3 detik: ulang dari awal. Kurang dari itu: lagu sebelumnya.
+  
     if (a.currentTime > 3 || jumlah < 2) {
       a.currentTime = 0;
       tampilWaktu();
@@ -139,8 +133,6 @@
     }
     pindah(nomorAktif() - 1, true);
   }
-
-  /* ---------- tombol ---------- */
 
   btnPlay.addEventListener('click', function () {
     var a = audioAktif();
