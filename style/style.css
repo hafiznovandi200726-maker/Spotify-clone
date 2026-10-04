@@ -257,3 +257,76 @@ body {
   border-radius: 2px;
   background: linear-gradient(to right, var(--isi) var(--p), rgba(255, 255, 255, 0.3) var(--p));
 } 
+
+.geser::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--putih);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+}
+.geser:hover::-webkit-slider-thumb,
+.geser:focus-visible::-webkit-slider-thumb { opacity: 1; }
+
+.geser::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.geser::-moz-range-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--isi);
+}
+.geser::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--putih);
+  opacity: 0;
+}
+.geser:hover::-moz-range-thumb,
+.geser:focus-visible::-moz-range-thumb { opacity: 1; }
+
+/* ===== kanan: volume dan pilih lagu ===== */
+.daftar {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.util {
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.geser-volume {
+  flex: none;
+  width: 100px;
+}
+
+.ikon-bisu { display: none; }
+#btn-mute[data-suara="mati"] .ikon-suara { display: none; }
+#btn-mute[data-suara="mati"] .ikon-bisu { display: block; }
+
+.daftar label {
+  padding: 6px 14px;
+  border: 1px solid var(--garis);
+  border-radius: 999px;
+  color: var(--abu);
+  font-weight: 700;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.daftar label:hover {
+  color: var(--putih);
+  border-color: var(--abu);
+}
