@@ -71,3 +71,28 @@
     pemutar.setAttribute('data-main', main ? 'ya' : 'tidak');
     btnPlay.setAttribute('aria-label', main ? 'Jeda' : 'Putar');
   }
+
+  function tampilVolume() {
+    var efektif = bisu ? 0 : volume;
+    volumeEl.value = Math.round(efektif * 100);
+    isiPersen(volumeEl, efektif * 100);
+    btnMute.setAttribute('data-suara', efektif === 0 ? 'mati' : 'hidup');
+    btnMute.setAttribute('aria-label', efektif === 0 ? 'Aktifkan suara' : 'Bisukan');
+    audios.forEach(function (a) {
+      a.volume = volume;
+      a.muted = bisu;
+    });
+  }
+
+  /* ---------- memutar ---------- */
+
+  function putar() {
+    var janji = audioAktif().play();
+    if (janji && janji.catch) {
+      janji.catch(function (err) {
+        if (err && err.name !== 'AbortError') {
+          pesan('Lagu tidak bisa diputar. Periksa nama file di folder music.');
+        }
+      });
+    }
+  }
