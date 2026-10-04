@@ -292,7 +292,6 @@ body {
 .geser:hover::-moz-range-thumb,
 .geser:focus-visible::-moz-range-thumb { opacity: 1; }
 
-/* ===== kanan: volume dan pilih lagu ===== */
 .daftar {
   display: flex;
   justify-content: flex-end;
