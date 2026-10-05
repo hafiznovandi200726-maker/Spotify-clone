@@ -52,7 +52,6 @@
       <audio class="p2" controls preload="none" src="music/rawr-goofy-ahh.mp3" aria-label="Rawr"></audio>
       <audio class="p3" controls preload="none" src="music/takut-jangan-ikut-ikut-jangan-takut.mp3" aria-label="Takut jangan ikot"></audio>
 
-      <!-- BARU: tombol kontrol (dijalankan oleh script/script.js) -->
       <div class="kontrol">
         <button class="ib" id="btn-shuffle" type="button" aria-pressed="false" aria-label="Acak">
           <svg class="garis" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
@@ -73,7 +72,7 @@
         </button>
       </div>
 
-      <!-- BARU: waktu dan progress bar -->
+      
       <div class="waktu">
         <span class="jam" id="waktu-now">0:00</span>
         <input class="geser" id="progres" type="range" min="0" max="100" step="0.1" value="0" aria-label="Posisi lagu">
@@ -83,9 +82,7 @@
       <p class="pesan" id="pesan" role="status"></p>
     </div>
 
-    <!-- Kanan: pilih lagu -->
     <div class="daftar">
-      <!-- BARU: volume dan layar penuh -->
       <div class="util">
         <button class="ib" id="btn-mute" type="button" data-suara="hidup" aria-label="Bisukan">
           <svg class="garis ikon-suara" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
