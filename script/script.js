@@ -21,10 +21,10 @@
   var waktuTotal = $('#waktu-total');
   var pesanEl = $('#pesan');
 
-  var terakhir = 0;        // nomor lagu yang terakhir dipilih
+  var terakhir = 0;       
   var acak = false;
-  var ulangi = 'off';      // 'off' | 'all' | 'one'
-  var menggeser = false;   // true saat progress bar sedang digeser
+  var ulangi = 'off';      
+  var menggeser = false;   
   var volume = 0.7;
   var bisu = false;
 
@@ -154,3 +154,96 @@
     btnRepeat.setAttribute('aria-label',
       'Ulangi: ' + (ulangi === 'off' ? 'mati' : ulangi === 'all' ? 'semua lagu' : 'satu lagu'));
   });
+
+ btnMute.addEventListener('click', function () {
+    if (bisu || volume === 0) {
+      bisu = false;
+      if (volume === 0) volume = 0.4;
+    } else {
+      bisu = true;
+    }
+    tampilVolume();
+  });
+
+  volumeEl.addEventListener('input', function () {
+    volume = volumeEl.value / 100;
+    if (volume > 0) bisu = false;
+    tampilVolume();
+  });
+
+  progres.addEventListener('input', function () {
+    menggeser = true;
+    audioAktif().currentTime = parseFloat(progres.value);
+    tampilWaktu();
+  });
+  progres.addEventListener('change', function () {
+    menggeser = false;
+    tampilWaktu();
+  });
+
+  if (document.documentElement.requestFullscreen) {
+    btnLayar.addEventListener('click', function () {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        document.documentElement.requestFullscreen().catch(function () {
+          pesan('Layar penuh tidak tersedia di sini.');
+        });
+      }
+    });
+  } else {
+    btnLayar.hidden = true;
+  }
+
+  radios.forEach(function (radio, k) {
+    radio.addEventListener('change', function () {
+      var sedangMain = !audios[terakhir].paused;
+      pindah(k, sedangMain);
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.code === 'Space' && e.target === document.body) {
+      e.preventDefault();
+      btnPlay.click();
+    }
+  });
+
+  audios.forEach(function (a, k) {
+    a.controls = false;
+    function aktif() { return k === nomorAktif(); }
+
+    a.addEventListener('timeupdate', function () { if (aktif()) tampilWaktu(); });
+    a.addEventListener('loadedmetadata', function () { if (aktif()) tampilWaktu(); });
+    a.addEventListener('durationchange', function () { if (aktif()) tampilWaktu(); });
+    a.addEventListener('play', function () { if (aktif()) tampilPlay(); });
+    a.addEventListener('pause', function () { if (aktif()) tampilPlay(); });
+    a.addEventListener('waiting', function () { if (aktif()) pemutar.classList.add('muat'); });
+    a.addEventListener('playing', function () { if (aktif()) pemutar.classList.remove('muat'); });
+    a.addEventListener('canplay', function () { if (aktif()) pemutar.classList.remove('muat'); });
+
+    a.addEventListener('error', function () {
+      if (!aktif()) return;
+      pemutar.classList.remove('muat');
+      pesan('Lagu gagal dimuat. Periksa nama file di folder music.');
+    });
+
+    a.addEventListener('ended', function () {
+      if (!aktif()) return;
+      if (ulangi === 'one') {
+        a.currentTime = 0;
+        putar();
+      } else if (acak || ulangi === 'all' || k < jumlah - 1) {
+        berikutnya();
+      } else {
+        pindah(0, false);   
+      }
+    });
+  });
+
+  terakhir = nomorAktif();
+  audios[terakhir].preload = 'metadata';
+  tampilVolume();
+  tampilWaktu();
+  tampilPlay();
+})();
