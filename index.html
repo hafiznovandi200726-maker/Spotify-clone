@@ -22,3 +22,92 @@
     <img class="sampul p2" src="cover/Screenshot 2026-10-01 111008.png" alt="Sampul Embun Pagi">
     <img class="sampul p3" src="cover/Screenshot 2026-10-01 111015.png" alt="Sampul Gelombang Tenang">
   </main>
+
+
+  <div class="bar">
+
+   
+    <div class="info p1">
+      <img class="mini" src="cover/Screenshot 2026-10-01 110933.png" alt="">
+      <div class="teks">
+        <p class="judul">Enjoyyy</p>
+      </div>
+    </div>
+    <div class="info p2">
+      <img class="mini" src="cover/Screenshot 2026-10-01 111008.png" alt="">
+      <div class="teks">
+        <p class="judul">Rawr</p>
+      </div>
+    </div>
+    <div class="info p3">
+      <img class="mini" src="cover/Screenshot 2026-10-01 111015.png" alt="">
+      <div class="teks">
+        <p class="judul">Takut Jangan ikot</p>
+      </div>
+    </div>
+
+   
+    <div class="pemutar">
+      <audio class="p1" controls preload="none" src="music/Persona 4 - Like A Dream Come True.mp3" aria-label="Enjoyyy"></audio>
+      <audio class="p2" controls preload="none" src="music/rawr-goofy-ahh.mp3" aria-label="Rawr"></audio>
+      <audio class="p3" controls preload="none" src="music/takut-jangan-ikut-ikut-jangan-takut.mp3" aria-label="Takut jangan ikot"></audio>
+
+      <!-- BARU: tombol kontrol (dijalankan oleh script/script.js) -->
+      <div class="kontrol">
+        <button class="ib" id="btn-shuffle" type="button" aria-pressed="false" aria-label="Acak">
+          <svg class="garis" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20L21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+        </button>
+        <button class="ib" id="btn-prev" type="button" aria-label="Lagu sebelumnya">
+          <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zM9.5 12L18 6v12z"/></svg>
+        </button>
+        <button class="ib tombol-play" id="btn-play" type="button" aria-label="Putar">
+          <svg class="ikon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg class="ikon-jeda" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+          <span class="putar-muat"></span>
+        </button>
+        <button class="ib" id="btn-next" type="button" aria-label="Lagu berikutnya">
+          <svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM6 18V6l8.5 6z"/></svg>
+        </button>
+        <button class="ib" id="btn-repeat" type="button" data-mode="off" aria-pressed="false" aria-label="Ulangi: mati">
+          <svg class="garis" viewBox="0 0 24 24"><path d="M17 2l4 4-4 4M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4M21 13v1a4 4 0 0 1-4 4H3"/><path class="angka-satu" d="M11 10h1.5v5"/></svg>
+        </button>
+      </div>
+
+      <!-- BARU: waktu dan progress bar -->
+      <div class="waktu">
+        <span class="jam" id="waktu-now">0:00</span>
+        <input class="geser" id="progres" type="range" min="0" max="100" step="0.1" value="0" aria-label="Posisi lagu">
+        <span class="jam" id="waktu-total">0:00</span>
+      </div>
+
+      <p class="pesan" id="pesan" role="status"></p>
+    </div>
+
+    <!-- Kanan: pilih lagu -->
+    <div class="daftar">
+      <!-- BARU: volume dan layar penuh -->
+      <div class="util">
+        <button class="ib" id="btn-mute" type="button" data-suara="hidup" aria-label="Bisukan">
+          <svg class="garis ikon-suara" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>
+          <svg class="garis ikon-bisu" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM23 9l-6 6M17 9l6 6"/></svg>
+        </button>
+        <input class="geser geser-volume" id="volume" type="range" min="0" max="100" step="1" value="70" aria-label="Volume">
+        <button class="ib" id="btn-layar" type="button" aria-label="Layar penuh">
+          <svg class="garis" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+        </button>
+      </div>
+
+      <label for="l1">Lagu 1</label>
+      <label for="l2">Lagu 2</label>
+      <label for="l3">Lagu 3</label>
+    </div>
+
+  </div>
+
+  
+</div>
+
+<script src="script/script.js"></script>
+
+</body>
+</html>
