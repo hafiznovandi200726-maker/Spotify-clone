@@ -329,3 +329,49 @@ body {
   color: var(--putih);
   border-color: var(--abu);
 }
+
+#l1:checked ~ .app .sampul.p1 { display: block; }
+#l2:checked ~ .app .sampul.p2 { display: block; }
+#l3:checked ~ .app .sampul.p3 { display: block; }
+
+#l1:checked ~ .app .info.p1 { display: flex; }
+#l2:checked ~ .app .info.p2 { display: flex; }
+#l3:checked ~ .app .info.p3 { display: flex; }
+
+#l1:checked ~ .app label[for="l1"],
+#l2:checked ~ .app label[for="l2"],
+#l3:checked ~ .app label[for="l3"] {
+  background: var(--putih);
+  border-color: var(--putih);
+  color: var(--hitam);
+}
+
+#l1:focus-visible ~ .app label[for="l1"],
+#l2:focus-visible ~ .app label[for="l2"],
+#l3:focus-visible ~ .app label[for="l3"] {
+  outline: 2px solid var(--putih);
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .layar { padding-top: 48px; }
+
+  .sampul { width: min(78vw, 44vh, 360px); }
+
+  .bar {
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .pemutar { align-items: stretch; }
+  .kontrol { justify-content: center; gap: 20px; }
+  .waktu { max-width: none; }
+
+  .daftar { justify-content: flex-start; }
+  .util { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layar { transition: none; }
+  .putar-muat { animation-duration: 2s; }
+}
